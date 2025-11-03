@@ -71,3 +71,23 @@ body {
 .section-title {
   margin-top:60px;
 }
+
+.subtitle {
+  font-size:20px;
+  color:#39545f;
+}
+
+.imgborder {
+  border-radius: 4px;
+  border:2px solid rgba(0, 0, 0, 0.432);
+}
+
+.viewpdf a {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: var(--brand);
+  background: #ffd6e075;
+  transition: opacity 0.3s ease;
+}

@@ -47,6 +47,7 @@
             <button class="chip active" data-filter="all">All</button>
             <button class="chip" data-filter="gam">Game Project</button>
             <button class="chip" data-filter="webapp">Web Application</button>
+            <button class="chip" data-filter="design">Level Design</button>
             <button class="chip" data-filter="other">Other</button>
           </div>
           <div class="grid">
@@ -56,7 +57,9 @@
             
             <a class="project" data-type="webapp" href="fyp.html" target="_blank"><img class="thumb" src="assets/fyp_cover.jpg" alt="Python Quiz Generator"><div class="proj-title">Python Quiz Generator</div><div class="proj-sub">Final Year Project (Polytechnic)</div></a>
 
-            <a class="project" data-type="other" href="other.html" target="_blank"><img class="thumb" src="assets/others_cover.jpg" alt="Sound Pathfinding"><div class="proj-title">Sound (Heat Map) Pathfinding</div><div class="proj-sub">Solo Project</div></a>
+            <a class="project" data-type="design" href="design_portfolio.html" target="_blank"><img class="thumb" src="assets/designintent.PNG" alt="Level Design"><div class="proj-title">Level Design</div><div class="proj-sub">Design Portfolio</div></a>
+            
+            <a class="project" data-type="other" href="other.html" target="_blank"><img class="thumb" src="assets/others_cover.jpg" alt="Sound-based Group Pathfinding"><div class="proj-title">Sound-based Group Pathfinding</div><div class="proj-sub">Solo Project</div></a>
           </div>
         </div>
 
@@ -86,35 +89,63 @@
     </section>
   </main>
 
-  <script>
-    const tabs=document.querySelectorAll('.tab');
-    const sections=document.querySelectorAll('.section');
-    tabs.forEach(t=>t.addEventListener('click',()=>{
-      tabs.forEach(x=>x.classList.remove('active'));
-      sections.forEach(s=>s.classList.remove('active'));
-      t.classList.add('active');
-      const target=document.querySelector(t.dataset.target);
-      if(target) target.classList.add('active');
-    }));
+<script>
+  // Tabs (Portfolio / About / Resume)
+  const tabs = document.querySelectorAll('.tab');
+  const sections = document.querySelectorAll('.section');
 
-    const chips = document.querySelectorAll('.chip');
-    const projects = document.querySelectorAll('.project');
+function animateSection(targetEl) {
+  // Animate only the section container (not titles or nav)
+  const animTargets = targetEl.querySelectorAll('.project');
+  
+  animTargets.forEach((card, i) => {
+    card.classList.remove('reveal');
+    card.style.animationDelay = (i * 60) + 'ms'; // stagger
+    void card.offsetWidth; // reflow
+    const style = getComputedStyle(card);
+    if (style.display !== 'none' && style.visibility !== 'hidden') {
+      card.classList.add('reveal');
+    }
+  });
+}
 
-    chips.forEach(chip => {
-        chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        const filter = chip.dataset.filter;
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
+    t.classList.add('active');
+    const target = document.querySelector(t.dataset.target);
+    if (target) {
+      target.classList.add('active');
+      animateSection(target);
+    }
+  }));
 
-        projects.forEach(p => {
-            if (filter === 'all' || p.dataset.type === filter) {
-            p.style.display = 'block';
-            } else {
-            p.style.display = 'none';
-            }
-        });
-        });
+  // Chips (All / Game Project / Web Application / Other)
+  const chips = document.querySelectorAll('.chip');
+  const projects = document.querySelectorAll('.project');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+
+      projects.forEach(p => {
+        const match = (filter === 'all' || p.dataset.type === filter);
+        p.style.display = match ? 'block' : 'none';
+      });
+
+      // Re-animate only the visible ones in the current section
+      const currentSection = document.querySelector('.section.active');
+      animateSection(currentSection);
     });
-  </script>
+  });
+
+  // Initial load animation (Portfolio shows first by default)
+  window.addEventListener('DOMContentLoaded', () => {
+    const initial = document.querySelector('.section.active') || sections[0];
+    if (initial) animateSection(initial);
+  });
+</script>
 </body>
 </html>

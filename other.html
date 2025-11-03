@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project - The Pharaoh's Legacy</title>
+  <title>Project - Sound-based Group Pathfinding</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,56 +16,154 @@
     <section class="card project-wrap">
 
       <!-- Title -->
-      <h1 class="title"><span style="-webkit-background-clip:text;-webkit-text-fill-color:black;background:linear-gradient(90deg,#f5a8c0,#fff6f93d);">The Pharaoh's Legacy</span></h1>
-      <div class="section-subtitle">Software Engineering Project 3</div>
+      <h1 class="title"><span style="-webkit-background-clip:text;-webkit-text-fill-color:black;background:linear-gradient(90deg,#bdfff6,#fff6f93d); font-size: 50px">Sound-based Group Pathfinding</span></h1>
+      <div class="section-subtitle">Solo Project</div>
       <div class="divider"></div>
       <!-- Description -->
       <p class="lead">
-        You are an intrepid explorer seeking the lost legacy treasures of an ancient pharaoh. 
+        The goal is to combine techniques to create a more immersive type of group AI 
+that does not rely only on just "sight", or range, but adds a layer of depth by 
+having "sound detection", and communication between the AIs.  
       </p>
-      <p>
-        Wandering within its mystical chambers, you must solve intricate puzzles by strategically rotating enchanted crossbows to fire arrows and unlock hidden secrets. 
-      </p>
+      <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 30px">
+        <div style="width: 300px;">
+          <a class="project">
+            <img class="imgborder" src="assets/other1.PNG" width="300">
+            <div style="color:rgba(163, 163, 163, 0.918)">
+              Heat produced when player walks
+            </div>
+          </a>
+        </div>
 
-      <!-- Official Trailer -->
-      <h2 class="section-title">Official Trailer</h2>
-      <div class="video-embed">
-        <!-- Replace YOUTUBE_TRAILER_ID with the actual ID -->
-        <iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/GXtAR0nECd4?si=QBi8Eexsspxx2HOS" 
-        title="The Pharaoh's Legacy - Official Trailer" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-        </iframe>
+        <div style="margin-top:-20px">
+          <p>
+            Enemy pathfinding uses sound-based heatmaps. When the player or a mob produces
+            a sound (walking, throwing objects, etc.), it generates heat at the source that
+            dissipates outward to nearby grids, decreasing in intensity until it fades. 
+            </p>
+
+            <p>
+            Continuous movement keeps
+            the area warm, layering new heat on top of existing sources.
+          </p>
+        </div>
       </div>
+
+
+        <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 30px">
+          <div style="margin-top:-20px">
+            <p>
+              The "hotter" areas (red near the source, green at the edges) represent sound strength,
+            giving both the AI and player spatial audio awareness. 
+            </p>
+            <p>
+              More heat can be generated if the player starts running, showing the realistic aspect of
+              how different actions can produce different levels of sound.
+            </p>
+        </div>
+
+        <div style="width: 300px;">
+          <a class="project">
+            <img class="imgborder" src="assets/other2.PNG" width="300">
+            <div style="color:rgba(163, 163, 163, 0.918)">
+              More heat produced when running
+            </div>
+          </a>
+        </div>
+
+        
+      </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 30px">
+        <div style="width: 300px;">
+          <a class="project">
+            <img class="imgborder" src="assets/other4.jpg" width="300">
+            <div style="color:rgba(163, 163, 163, 0.918)">
+              Enemy spots player, and shouts (blue grids) to call the other enemies to chase the player
+            </div>
+          </a>
+        </div>
+
+        <div style="margin-top:-20px">
+      <p>
+        There will be multiple enemy AI roaming around that will detect the player if their 
+heat reaches the AI. When the player is detected, all nearby enemy AI will group up 
+to search the last known area where sound was produced. 
+      </p>
+        </div>
+      </div>
+
+      <p style="margin-top:30px">
+        Games that rely on a similar technology use it for enemy AIs to pathfind to the player. 
+Within games there may be a quest where the player has to be sneaky within a 
+specified zone, with the idea of using a heat map to indicate the loudness of the 
+player's footsteps, so the player will need to plan and strategise how they will get 
+through the objective without getting caught. This may help showcase on how to 
+visualise where the sound is coming from with the "hotter" being more obvious.
 
       <!-- Development write-up -->
-      <h2 class="section-title">Developing <span style="-webkit-background-clip:text;-webkit-text-fill-color:black;background:linear-gradient(90deg,#f5a8c0,#fff6f93d);">The Pharaoh's Legacy</span></h2>
-      <p class="lead">
+      <h2 class="section-title">Developing <span style="-webkit-background-clip:text;-webkit-text-fill-color:black;background:linear-gradient(90deg,#bdfff6,#fff6f93d);">Sound-based Group Pathfinding</span></h2>
+      
+      
+      <h2 class="subtitle">System Architecture</h2>
+            <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 30px">
+        <div style="width: 300px;">
+          <a class="project">
+            <img class="imgborder" src="assets/other3.PNG" width="300">
+            <div style="color:rgba(163, 163, 163, 0.918)">
+              Enemy has line of sight (LOS) only appears when player is in range and not blocked by obstacles
+            </div>
+          </a>
+        </div>
 
-        <!-- Adjust this paragraph to your real tools/role. -->
-        The Pharaoh's Legacy is a collaborative game project developed by a team of 8 students.
-        It was built using a custom 2D game engine written in C++, featuring an integrated ImGui interface, scripting support, and a component-based architecture.
-      </p>
-        <p>
-            As the Product Manager, I worked closely with the team, organizing team meetings and tasks. I also implemented an internal debugging system for identifying runtime issues easily, engineered a particle and animation component system that allows for seamless transitions and visual effects, and also integrated an asset browser to allow drag and drop of files into the engine.
-        </p>
-      <!-- Gameplay video -->
-      <h2 class="section-title">Gameplay Video</h2>
-      <div class="video-embed">
-        <!-- Replace YOUTUBE_GAMEPLAY_ID with the actual ID -->
-        <iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/aPo4Ly6uuso?si=uzdkxl5V5I6Hsqk8" 
-        title="The Pharaoh's Legacy - Gameplay" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-        </iframe>
+        <div style="margin-top:-28px">
+<p class="lead">
+  The system implements a sound-reactive enemy AI using A* pathfinding over a grid-based 
+map. The enemies respond dynamically to the auditory cues, which in this case are the 
+heatmap and visual detection using the Line-of-Sight (LOS) mechanic. The system is 
+composed of the following two components for a cost-efficient pathfinding AI. 
+</p>
+        </div>
       </div>
 
+<br>
+
+      <h2 class="subtitle">Grid-Based Sound Heatmap</h2>
+         <p class="lead">
+         The environment is represented as a 2D grid, where each cell carries a "heat" value from 0 
+to 255, where 0 represents the "quietest" and 255 represents the "loudest". These values 
+simulate the intensity of the sound or noise generated by the player. 
+<br> Enemy AI agents would 
+reference this heatmap to decide to investigate the source of the "heat" and where the source 
+is located. 
+      </p>
+<br>
+      <h2 class="subtitle">A* Pathfinding Controller</h2>
+      <p class="lead">
+        The pathfinding component determines the shortest cost-efficient path from an enemy's 
+current location to the target goal, in this case is set as the player. Using the A* algorithm 
+that evaluates nodes by calculating a final cost combining the actual movement cost from 
+start to current node and the heuristic cost from the current node to the goal. 
+      </p>
+       <br>
+      <h2 class="subtitle">Enemy Decision Logic</h2>
+      <p class="lead">
+        Enemy agents operate using a reactive behaviour system that prioritises visual and auditory 
+cues within the game environment. These cues determine if the enemy would visually chase 
+the player using LOS, react to the noise based on the heatmap, respond to a nearby fellow 
+enemy's "shout" signal or roam randomly when no stimuli are detected. 
+      </p>
+<br>
+      <h2 class="subtitle">Grid-Based Sound Heatmap </h2>
+      <p class="lead">
+        In addition to the auditory cues using the heatmap, the enemy agents also have the 
+Line-of-Sight (LOS) mechanic. The system uses a field-of-view (FOV) to determine 
+whether the player is visible, and a visible line from the enemy to the player would appear to 
+showcase the LOS. <br>
+If the player is detected visually, the enemy would immediately go towards the 
+player, ignoring any sound-based check logic. 
+      </p>
+      
       <!-- Actions -->
       <div class="btn-row" style="margin-top: 100px">
         <a class="btn" href="index.html">← Back to Portfolio</a>
