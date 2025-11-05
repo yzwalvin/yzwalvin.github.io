@@ -64,8 +64,29 @@
         </div>
 
         <div id="about" class="section">
-          <h2 class="section-title">About</h2>
-          <p>About content here.</p>
+          <h2 class="section-title">About Me</h2>
+          <div style="margin-top:-20px; margin-bottom: 70px"></div>
+          <div style="
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            line-height: 1.6;
+          ">
+            <p>
+            I am currently pursuing a degree in Computer Science in Interactive Media and Game Development at Singapore Institute of Technology, in collaboration with DigiPen Institute of Technology.
+            </p>
+            <p>
+            I am passionate about creating meaningful projects and enjoy the process of learning, experimenting, and designing - turning ideas into interactive experiences. 
+            </p>
+            <p>
+            I enjoy tackling challenges, solving problems, and optimizing code to achieve both functional and elegant solutions.
+            </p>
+            <p>
+            Outside of development, I am driven by curiosity and a desire to continuously improve, whether it is exploring new technologies, refining gameplay mechanics, or enhancing user experiences.
+            </p>
+
+          </div>
         </div>
 
         <div id="resume" class="section">
@@ -94,20 +115,34 @@
   const tabs = document.querySelectorAll('.tab');
   const sections = document.querySelectorAll('.section');
 
-function animateSection(targetEl) {
-  // Animate only the section container (not titles or nav)
-  const animTargets = targetEl.querySelectorAll('.project');
-  
-  animTargets.forEach((card, i) => {
-    card.classList.remove('reveal');
-    card.style.animationDelay = (i * 60) + 'ms'; // stagger
-    void card.offsetWidth; // reflow
-    const style = getComputedStyle(card);
-    if (style.display !== 'none' && style.visibility !== 'hidden') {
-      card.classList.add('reveal');
+  function animateSection(targetEl) {
+    if (!targetEl) return;
+
+    if (targetEl.id === 'portfolio') {
+      // Animate only visible project cards in Portfolio
+      const cards = targetEl.querySelectorAll('.project');
+      cards.forEach((card, i) => {
+        card.classList.remove('reveal');
+        card.style.animationDelay = (i * 60) + 'ms'; // stagger
+        void card.offsetWidth; // reflow
+        const style = getComputedStyle(card);
+        if (style.display !== 'none' && style.visibility !== 'hidden') {
+          card.classList.add('reveal');
+        }
+      });
+    } else {
+      // For About/Resume: pop-in all top-level children except the title
+      const blocks = Array.from(targetEl.children)
+        .filter(el => !el.classList.contains('section-title'));
+
+      blocks.forEach((el, i) => {
+        el.classList.remove('pop');
+        el.style.animationDelay = (i * 60) + 'ms'; // subtle stagger
+        void el.offsetWidth; // reflow
+        el.classList.add('pop');
+      });
     }
-  });
-}
+  }
 
   tabs.forEach(t => t.addEventListener('click', () => {
     tabs.forEach(x => x.classList.remove('active'));
@@ -120,7 +155,7 @@ function animateSection(targetEl) {
     }
   }));
 
-  // Chips (All / Game Project / Web Application / Other)
+  // Chips (All / Game Project / Web Application / Level Design / Other)
   const chips = document.querySelectorAll('.chip');
   const projects = document.querySelectorAll('.project');
 
@@ -135,13 +170,13 @@ function animateSection(targetEl) {
         p.style.display = match ? 'block' : 'none';
       });
 
-      // Re-animate only the visible ones in the current section
+      // Re-animate visible cards in the current (Portfolio) section
       const currentSection = document.querySelector('.section.active');
       animateSection(currentSection);
     });
   });
 
-  // Initial load animation (Portfolio shows first by default)
+  // Initial load animation
   window.addEventListener('DOMContentLoaded', () => {
     const initial = document.querySelector('.section.active') || sections[0];
     if (initial) animateSection(initial);

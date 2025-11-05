@@ -268,8 +268,8 @@ a:visited {
   padding: 10px 20px;
   border-radius: 10px;
   font-weight: 500;
-  color: var(--brand);
-  background: #ffd6e075;
+  color: rgb(109, 109, 109);
+  background: #ffd6e093;
   transition: opacity 0.3s ease;
 }
 
@@ -313,4 +313,14 @@ a:visited {
 /* Optional: animate section content too */
 .section.reveal {
   animation: growIn 360ms ease-out both;
+}
+
+/* Pop-in animation for section content */
+@keyframes popIn {
+  from { transform: scale(0.98); opacity: 0; }
+  to   { transform: scale(1);     opacity: 1; }
+}
+.pop {
+  animation: popIn 360ms ease-out both;
+  will-change: transform, opacity;
 }

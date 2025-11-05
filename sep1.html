@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project - Purr-suit of Home</title>
+  <title>Project - Escape from PlaceHolder</span></title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,17 +14,17 @@
 <body>
   <main class="container">
     <section class="card project-wrap">
-
       <!-- Title -->
-      <h1 class="title"><span style="-webkit-background-clip:text;-webkit-text-fill-color:black;background:linear-gradient(90deg,#ffcb9a,#fff6f93d);">Purr-suit of Home</span></h1>
-      <div class="section-subtitle">Software Engineering Project 2</div>
-      <div class="divider"></div>
+      <h1 class="title"><span style="-webkit-background-clip:text;-webkit-text-fill-color:black;background:linear-gradient(90deg,#f0ff9a,#f7ffae21);" class="project-name"></span></h1>
+      <div class="section-subtitle">Software Engineering Project 1</div>
+      <div class="dates">Sep 2023 - Nov 2023</div>
+     <div class="divider"></div>
       <!-- Description -->
       <p class="lead">
-        You play as a lost cat on a journey to find its way home.
+        You play as a prisoner, trying to escape from the prison "PlaceHolder".
       </p>
       <p>
-        Navigate through busy streets, dodge looming dangers, and overcome obstacles before it gets too dark.
+        Avoid the guards and their field of vision to not get caught, while navigating through the prison, and using abilities to aid your escape.
       </p>
 
       <!-- Official Trailer -->
@@ -32,8 +32,8 @@
       <div class="video-embed">
         <!-- Replace YOUTUBE_TRAILER_ID with the actual ID -->
         <iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/j5H-jHxkZbk?si=KtYFP0hG3lQEN93H" 
-        title="The Pharaoh's Legacy - Official Trailer" 
+        src="https://www.youtube.com/embed/Ie23GXgohOw?si=p8hiBECWxz40vUfb" 
+        title="Escape from PlaceHolder - Official Trailer" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
         referrerpolicy="strict-origin-when-cross-origin" 
@@ -41,28 +41,41 @@
         </iframe>
       </div>
       <!-- Development write-up -->
-      <h2 class="section-title">Developing <span style="-webkit-background-clip:text;-webkit-text-fill-color:black;background:linear-gradient(90deg,#ffcb9a,#fff6f93d);">Purr-suit of Home</span></h2>
+      <h2 class="section-title">Developing <span style="-webkit-background-clip:text;-webkit-text-fill-color:black;background:linear-gradient(90deg,#ffcb9a,#fff6f93d);" class="project-name"></span></h2>
       <p class="lead">
 
         <!-- Adjust this paragraph to your real tools/role. -->
-        As a Product Manager and Programmer, I led a team of 5 to design and develop a 2D game in C++ inspired by "Crossy Road," utilizing DigiPen's Alpha Engine to implement core gameplay mechanics and features.
+        As a Product Manager and Programmer, I led a team of 4 to design and develop a 2D game in C, utilizing DigiPen's CProcessing Engine to implement core gameplay mechanics and features.
       </p>
       <p>
-        Designed and implemented the core architecture and mechanics of the project while coordinating with team members to ensure smooth integration of features and maintain overall project cohesion.
+        I implemented useful utility functions, flash ability, created custom sounds and artwork, fog of war feature, and also worked closely with team members to coordinate a cohesive game.
       </p>
        
       
       <h2 class="section-title">Gameplay Images</h2>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: -10px;">
-        <div><a class="project"><img src="assets/poh2.jpg" height="384.69"><div>Cat in the middle of a road</div></a></div>
-        <div><a class="project"><img src="assets/poh1.jpg" width="420"><div>Cat in a box, crossing the river</div></a></div>
 
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: -10px;">
+        <div><a class="project"><img class="imgborder" src="assets/mainmenu.png" width="420"></a></div>
+        <div><a class="project"><img class="imgborder" src="assets/fogofwar.png" width="350"></a></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: -10px;">
+        <div class="shortdesc">Main Menu</div>
+        <div class="shortdesc">Fog of War</div>
       </div>
       <p><br></p>
+
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: -10px;">
-        <div><a class="project"><img src="assets/poh3.jpg" width="420"><div>Shooting fish bones at dogs</div></a></div>
-        <div><a class="project"><img src="assets/poh4.jpg" height="244.72"><div>Navigating through the night</div></a></div>
-    </div>
+        <div><a class="project"><img class="imgborder" src="assets/maplayout.png" width="350"></a></div>
+        <div><a class="project"><img class="imgborder" src="assets/levelfinish.png" width="450"></a></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: -10px;">
+        <div class="shortdesc">Map Layout without fog</div>
+        <div class="shortdesc">End of Level screen</div>
+      </div>
+      <p><br></p>
+
+
+
       <!-- Actions -->
       <div class="btn-row" style="margin-top: 100px">
         <a class="btn" href="index.html">← Back to Portfolio</a>
@@ -73,5 +86,11 @@
       </div>
     </section>
   </main>
+  <script>
+    var name = "Escape from PlaceHolder";
+    document.querySelectorAll(".project-name").forEach(el => {
+      el.textContent = name;
+    });
+  </script>
 </body>
 </html>

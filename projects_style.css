@@ -37,6 +37,7 @@ body {
 .lead { margin-top:20px; font-size: 16px; line-height: 1.75; color: var(--text); }
 .title { font-size: 60px; font-weight: 600; margin-top: -10px;}
 .section-subtitle { margin: -40px 0 -18px; color: #727272bb; font-size: 18px; }
+.dates { margin: 20px 0 -18px; color: #727272bb; font-size: 14px; }
 .video-embed { position: relative; width: 80%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; border: 1px solid var(--ring); background: var(--panel-2); }
 .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .btn-row { display: flex; gap: 14px; margin-top: 24px; }
@@ -90,4 +91,8 @@ body {
   color: var(--brand);
   background: #ffd6e075;
   transition: opacity 0.3s ease;
+}
+
+.shortdesc {
+  color:rgba(116, 108, 108, 0.918);
 }
